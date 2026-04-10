@@ -8,7 +8,7 @@
 
 a {
   color: #ff3b3b;
-  text-decoration: none; /* to remove the underline */
+  text-decoration: none;
 }
 
 a:hover {
@@ -17,17 +17,26 @@ a:hover {
 
 .movie-details {
   color: #ff3b3b;
-  font-weight: 400;
+  font-weight: 600;
   text-shadow:
     0 0 6px rgba(245, 235, 44, 0.319),
     0 0 10px rgba(91, 0, 0, 0.833);
 }
-.movie-title {
+.critic-title {
   color: #ff3b3b;
   font-weight: 400;
   text-shadow:
     0 0 6px rgba(245, 235, 44, 0.441),
     0 0 10px rgba(91, 0, 0, 0.856);
+}
+
+.movie-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-shadow:  0 0 12px rgba(255, 60, 20, 0.9),
+                0 0 20px rgba(255, 30, 0, 0.39);
 }
 
 .flame-rating {
@@ -41,10 +50,55 @@ a:hover {
 
 .reviewer-name {
   font-size: 20px;
+  color: white;
 }
 
 .navbar-brand-text {
   font-size: 25px;
   padding-bottom: 10px;
-  font-family: Arial Narrow Bold, sans-serif;
+}
+
+.movie-card {
+  text-align: center;
+  border: 2px solid #ffffffa6;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 0 12px rgba(255, 60, 20, 0.9),
+              0 0 20px rgba(255, 30, 0, 0.39);
+
+}
+
+.movie-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-shadow: 0 0 6px rgba(255, 59, 45, 0.6);
+    
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-card-poster {
+  width: 90%; 
+  max-width: 220px; 
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 12px rgba(248, 40, 40, 0.785);
+}
+
+.movie-card-score {
+  margin-top: 0.5rem;
+}
+
+.home-title{
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+
+  text-shadow:  0 0 12px rgba(255, 60, 20, 0.9),
+                0 0 20px rgba(255, 30, 0, 0.39);
 }

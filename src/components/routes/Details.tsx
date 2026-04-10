@@ -5,43 +5,16 @@
 // https://www.typescriptlang.org/docs/handbook/functions.html
 // https://www.w3schools.com/jsref/jsref_tolocaledatestring.asp
 // https://www.w3schools.com/cssref/css3_pr_filter.php
+// https://www.w3schools.com/html/html_css.asp
+// 
 
 import { Link, useParams } from "react-router";
 import { useState, useEffect } from "react";
 import type { Movie } from "../../types/Movie"
 import type { CriticReview } from "../../types/CriticReview";
-
-// helper function to convert runtime format 
-function formatRuntime(minutes: number): string {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    return `${hours}h ${mins}m`;
-}
-
-// helper function to convert release date format
-function formatReleaseDate(dateString: string): string {
-    const date = new Date(dateString);
-
-    return date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-    });
-}
-
-// helper funtion to render stars
-function renderStars(score: number) {
-    return (
-        <>
-            {[...Array(5)].map((_, i) => (
-                <span key={i} className="star">
-                    {i < score ? <img src="/fireLogo.png" alt="ReviewScore" className="flame-rating" /> :
-                    <img src="/emptyFlame.png" alt="ReviewScore" className="flame-rating" />}
-                </span>
-            ))}
-        </>
-    );
-}
+import { renderStars } from "../../utils/renderStars";
+import { formatRuntime } from "../../utils/formatRuntime";
+import { formatReleaseDate } from "../../utils/formatReleaseDate";
 
 
 export default function Details() {
@@ -80,7 +53,7 @@ export default function Details() {
         <>
             <h2 className="mb-4 mt-3 movie-title">{movie.title}</h2>
 
-            <div className="d-flex gap-4 align-items-start mb-5">
+            <div className="d-flex gap-4 align-items-stretch mb-5">
 
                 {/* left side (poster) is a fixed size */}
                 <div style={{ width: "300px", flexShrink: 0 }}>
@@ -88,21 +61,23 @@ export default function Details() {
                 </div>
 
                 {/* right side (details) is a flexible size */}
-                <div className="flex-grow-1">
+                <div className="flex-grow-1 d-flex flex-column">
                     <div className="mb-5">{movie.synopsis}</div>
-                    <div className="mb-4 movie-details"><strong>Rating: </strong>{movie.rating}</div>
-                    <div className="mb-4 movie-details"><strong>Genre: </strong>{movie.genre}</div>
-                    <div className="mb-4 movie-details"><strong>Run Time: </strong>{formatRuntime(movie.runTime)}</div>
-                    <div className="mb-4 movie-details"><strong>Release Date: </strong>{formatReleaseDate(movie.releaseDate)}</div>
+                    <div className="mt-auto">
+                        <div className="mb-4"><strong className="movie-details">Rating: </strong>{movie.rating}</div>
+                        <div className="mb-4"><strong className="movie-details">Genre: </strong>{movie.genre}</div>
+                        <div className="mb-4"><strong className="movie-details">Run Time: </strong>{formatRuntime(movie.runTime)}</div>
+                        <div className="mb-4"><strong className="movie-details">Release Date: </strong>{formatReleaseDate(movie.releaseDate)}</div>
+                    </div>
                 </div>
             </div>
 
             {/* CRITIC REVIEWS */}
             <div>
-                <h2 className="mb-4 mt-3 movie-title">Critic Reviews</h2>
+                <h2 className="mb-4 mt-3 critic-title">Critic Reviews</h2>
                 
                 {reviews.map(review => (
-                    <div className="card p-1 mb-2 ">
+                    <div className="card p-1 mb-2 px-3">
                         <div>
                             <span>{renderStars(review.reviewScore)}</span>
                             <strong className="movie-details reviewer-name"> - {review.criticName}</strong>

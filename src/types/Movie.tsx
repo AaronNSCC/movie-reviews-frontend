@@ -9,4 +9,6 @@ export interface Movie {
         runTime: number;
         releaseDate: string;
         imageURL: string;
+
+        averageScore?: number;
 }
