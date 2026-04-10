@@ -37,7 +37,7 @@ export default function Details() {
                     <img src={movie.imageURL} alt={movie.title} className="img-fluid" />
                 </div>
 
-                {/* right side details is a flexible size */}
+                {/* right side (details) is a flexible size */}
                 <div className="flex-grow-1">
                     <p className="mb-4">{movie.synopsis}</p>
                 </div>
