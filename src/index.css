@@ -2,3 +2,30 @@
   height: 32px;
   width: auto;
 }
+.navbar {
+  height: 60px;
+}
+
+a {
+  color: #ff3b3b;
+  text-decoration: none; /* to remove the underline */
+}
+
+a:hover {
+  color: #e7e7e7;
+}
+
+.movie-details {
+  color: #ff3b3b;
+  font-weight: 400;
+  text-shadow:
+    0 0 6px rgba(245, 235, 44, 0.319),
+    0 0 10px rgba(91, 0, 0, 0.833);
+}
+.movie-title {
+  color: #ff3b3b;
+  font-weight: 400;
+  text-shadow:
+    0 0 6px rgba(245, 235, 44, 0.441),
+    0 0 10px rgba(91, 0, 0, 0.856);
+}

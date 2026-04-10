@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router"
 export default function Layout() {
     return (
         <>
-            <nav className="navbar">
+            <nav className="navbar navbar-dark border-bottom">
                 <div className="container mb-3">
                     <Link className="navbar-brand" to="/">
                         <img src="/fireLogo.png" alt="MovieReviews" className="navbar-logo" />
