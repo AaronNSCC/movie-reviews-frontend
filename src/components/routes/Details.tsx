@@ -4,10 +4,12 @@
 // https://www.w3schools.com/bootstrap4/bootstrap_flex.asp
 // https://www.typescriptlang.org/docs/handbook/functions.html
 // https://www.w3schools.com/jsref/jsref_tolocaledatestring.asp
+// https://www.w3schools.com/cssref/css3_pr_filter.php
 
 import { Link, useParams } from "react-router";
 import { useState, useEffect } from "react";
 import type { Movie } from "../../types/Movie"
+import type { CriticReview } from "../../types/CriticReview";
 
 // helper function to convert runtime format 
 function formatRuntime(minutes: number): string {
@@ -27,10 +29,27 @@ function formatReleaseDate(dateString: string): string {
     });
 }
 
+// helper funtion to render stars
+function renderStars(score: number) {
+    return (
+        <>
+            {[...Array(5)].map((_, i) => (
+                <span key={i} className="star">
+                    {i < score ? <img src="/fireLogo.png" alt="ReviewScore" className="flame-rating" /> :
+                    <img src="/emptyFlame.png" alt="ReviewScore" className="flame-rating" />}
+                </span>
+            ))}
+        </>
+    );
+}
+
+
 export default function Details() {
     const { id } = useParams();
 
     const [movie, setMovie] = useState<Movie | null>(null);
+    const [reviews, setReviews] = useState<CriticReview[]>([]);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -41,6 +60,18 @@ export default function Details() {
 
         fetchData()
     }, []) // run only once
+
+    useEffect(() => {
+        if (!movie) return;
+
+        const fetchData = async () => {
+            const res = await fetch(import.meta.env.VITE_API_HOST + `api/moviereviews?movieid=${movie.id}`);
+            const reviewData = await res.json();
+            setReviews(reviewData)
+        }
+
+        fetchData()
+    }, [movie]) // run only once
 
     if (!movie) {
         return <p>Loading...</p>;
@@ -66,6 +97,21 @@ export default function Details() {
                 </div>
             </div>
 
+            {/* CRITIC REVIEWS */}
+            <div>
+                <h2 className="mb-4 mt-3 movie-title">Critic Reviews</h2>
+                
+                {reviews.map(review => (
+                    <div className="card p-1 mb-2 ">
+                        <div>
+                            <span>{renderStars(review.reviewScore)}</span>
+                            <strong className="movie-details reviewer-name"> - {review.criticName}</strong>
+                            
+                        </div>
+                        <p className="mt-2">{review.reviewContent}</p>
+                    </div>
+                ))}
+            </div>
 
             <p>
                 {/* Return to home page. <Link to="/">Home</Link> */}

@@ -1,5 +1,3 @@
-import type { CriticReview } from "./CriticReview";
-
 export interface Movie {
         id: number; 
         genreId: number;  // Foreign key- many movies to ONE genre
@@ -11,5 +9,4 @@ export interface Movie {
         runTime: number;
         releaseDate: string;
         imageURL: string;
-        criticReviews: CriticReview[];
 }

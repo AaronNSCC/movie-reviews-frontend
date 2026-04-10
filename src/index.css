@@ -29,3 +29,22 @@ a:hover {
     0 0 6px rgba(245, 235, 44, 0.441),
     0 0 10px rgba(91, 0, 0, 0.856);
 }
+
+.flame-rating {
+  height: 20px;
+  width: auto;
+  padding-right: 6px;
+
+  filter: drop-shadow(0 0 6px rgba(255, 80, 30, 0.5))
+          drop-shadow(0 0 10px rgba(255, 60, 20, 0.3));
+}
+
+.reviewer-name {
+  font-size: 20px;
+}
+
+.navbar-brand-text {
+  font-size: 25px;
+  padding-bottom: 10px;
+  font-family: Arial Narrow Bold, sans-serif;
+}
