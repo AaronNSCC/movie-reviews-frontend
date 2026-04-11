@@ -13,7 +13,7 @@ export default function Layout() {
             </nav>
 
             <main className="container mt-4">
-                <Outlet></Outlet>
+                <Outlet></Outlet>               {/* Leads to home */}
             </main>
 
             <footer className="container mt-4">

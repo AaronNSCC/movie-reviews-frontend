@@ -6,39 +6,39 @@ import MovieCard from "../MovieCard";
 export default function Home() {
     const [movies, setMovies] = useState<Movie[]>([]);
 
-useEffect(() => {
-    const fetchData = async () => {
-        const res = await fetch(import.meta.env.VITE_API_HOST + 'api/movies');
-        const movies = await res.json();
+    useEffect(() => {                      
+        const fetchData = async () => {
+            const res = await fetch(import.meta.env.VITE_API_HOST + 'api/movies');  // fetch all movies
+            const movies = await res.json();                                        // response is json 
 
-        // loop and fetch reviews for each movie
-        for (const movie of movies) {
-            const reviewRes = await fetch(
-                import.meta.env.VITE_API_HOST + `api/moviereviews?movieid=${movie.id}`
-            );
-            const reviews = await reviewRes.json();
+            // loop and fetch reviews for each movie
+            for (const movie of movies) {                                                   // for each movie
+                const reviewRes = await fetch(
+                    import.meta.env.VITE_API_HOST + `api/moviereviews?movieid=${movie.id}`  // fetch its reviews
+                );
+                const reviews = await reviewRes.json();
 
-            // calculate average review score
-            if (reviews.length === 0) {
-                movie.averageScore = 0;
-            } else {
-                let totalScore = 0;
-                for (const review of reviews) {
-                    totalScore += review.reviewScore;
+                // calculate average review score
+                if (reviews.length === 0) {
+                    movie.averageScore = 0;
+                } else {
+                    let totalScore = 0;
+                    for (const review of reviews) {
+                        totalScore += review.reviewScore;
+                    }
+
+                    const average = totalScore / reviews.length; // divide total score by num of reviews
+
+                    movie.averageScore = average;
                 }
 
-                const average = totalScore / reviews.length; // divide total score by num of reviews
-
-                movie.averageScore = average;
             }
 
-        }
+            setMovies(movies);      // save final movie list - also triggers a re-render
+        };
 
-        setMovies(movies);
-    };
-
-    fetchData();
-}, []);
+        fetchData();
+    }, []); // Runs once
 
     return (
         <>

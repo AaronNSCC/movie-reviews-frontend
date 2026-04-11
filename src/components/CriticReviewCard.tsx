@@ -1,12 +1,15 @@
 import type { CriticReview } from "../types/CriticReview"
+import { renderStars } from "../utils/renderStars";
 
 
-export default function CriticReviewCard(props: {review: CriticReview }) {
-
+export default function CriticReviewCard({ review }: { review: CriticReview }) {
     return (
-        <div className="w-25 pb-3">
-            <div><strong>{props.review.criticName}</strong></div>
-            <div>{props.review.reviewScore}/5</div>
+        <div className="card p-1 mb-2 px-3">
+            <div>
+                {renderStars(review.reviewScore)}
+                <strong className="movie-details reviewer-name"> - {review.criticName}</strong>
+            </div>
+            <p className="mt-2">{review.reviewContent}</p>
         </div>
-    )
+    );
 }
