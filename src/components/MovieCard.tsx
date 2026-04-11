@@ -8,7 +8,7 @@ export default function MovieCard(props: { movie: Movie }) {
         <div className="movie-card">
             <div className="movie-card-title">{props.movie.title}</div>
             <img src={props.movie.imageURL} alt={props.movie.title} className="movie-card-poster" />
-            <p className="movie-card-score">Avg Rating: {renderStars(props.movie.averageScore ?? 0)}</p>
+            <p className="movie-card-score">Average Rating: {renderStars(props.movie.averageScore ?? 0)}</p>
         </div>
     )
 }

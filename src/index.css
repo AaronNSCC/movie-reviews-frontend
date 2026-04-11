@@ -4,6 +4,10 @@
 }
 .navbar {
   height: 60px;
+  border-bottom: 2px solid #ff3b3b;
+  padding-bottom: 60px;
+  box-shadow: 0 0 12px rgba(248, 40, 40, 0.785);
+  text-shadow: 4px 4px 10px #000000;
 }
 
 a {
@@ -55,12 +59,14 @@ a:hover {
 
 .navbar-brand-text {
   font-size: 25px;
+  font-weight: bolder;
   padding-bottom: 10px;
+  font-family: fantasy;
 }
 
 .movie-card {
   text-align: center;
-  border: 2px solid #ffffffa6;
+  border: 2px solid #000000a6;
   border-radius: 10px;
   padding: 12px;
   box-shadow: 0 0 12px rgba(255, 60, 20, 0.9),
@@ -74,7 +80,6 @@ a:hover {
   margin-bottom: 0.5rem;
   color: #fff;
   text-shadow: 0 0 6px rgba(255, 59, 45, 0.6);
-    
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -98,7 +103,5 @@ a:hover {
   color: #ffffff;
   text-align: center;
   margin-bottom: 1.5rem;
-
-  text-shadow:  0 0 12px rgba(255, 60, 20, 0.9),
-                0 0 20px rgba(255, 30, 0, 0.39);
+  text-shadow:  0 0 12px rgba(255, 59, 20, 0.54);
 }
