@@ -66,7 +66,7 @@ export default function Details() {
 
                 {/* right side (details) is a flexible size */}
                 <div className="flex-grow-1 d-flex flex-column">
-                    <div className="mb-5">{movie.synopsis}</div>
+                    <div className="mb-5 movie-synopsis">{movie.synopsis}</div>
                     <div className="mt-auto">
                         <div className="mb-4"><strong className="movie-details">Rating: </strong>{movie.rating}</div>
                         <div className="mb-4"><strong className="movie-details">Genre: </strong>{movie.genre}</div>
